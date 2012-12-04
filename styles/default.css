@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    height: 100%;
+    color: #fff;
+    text-shadow: 0 2px 0 #000;
+    background-image: url('../images/bkgs/bkg1.png');
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-color: #000;
+}
+#ei_title {
+    position:absolute;
+    height: 1.5em;
+    top: 100px;
+    border-bottom: 1px solid #fff;
+    font-family: 'Sanchez', serif;
+    font-size: 2.5em;
+}
+#ei_menu {
+    position: absolute;
+    top: 160px;
+}
+
+.ei_menuItem {
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 10px;
+    color: #999;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px dotted #555;
+    font-family: 'Special Elite', sans-serif;
+    font-size: 1em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.ei_menuItem:hover {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.ei_menuItem:active {
+    color: #aaa;
+}
+
+#ei_pedalVideo {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    width: 500px;
+    height: 300px;
+    border:0;
+    display: block;
+}
+#ei_pedalImage {
+    position: absolute;
+    z-index: 999;
+    top: -30px;
+    right: 320px;
+    display: none;
+}
+#ei_description {
+    font-family: Cardboard;
+    position: absolute;
+    z-index: 999;
+    top: 350px;
+    right: 20px;
+    width: 390px;
+    padding-left: 10px;
+    height: 120px;
+    color: #222;
+    text-shadow: 0 0 0 #000;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: -10px 10px 50px #000;
+    background-image:url('../images/bkgs/cardboard.jpg');
+    background-position: right top;
+    background-repeat: no-repeat;
+    display: none;
+    
+    transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+}
