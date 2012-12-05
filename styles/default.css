@@ -8,13 +8,28 @@ body {
     background-repeat: no-repeat;
     background-color: #000;
 }
+iframe {
+    box-shadow: -10px 20px 30px #000;
+    background-color: #000;
+}
+#ei_ytVideo {
+    background-color: #000;
+    display: none;
+}
+
 #ei_title {
     position:absolute;
     height: 1.5em;
     top: 100px;
-    border-bottom: 1px solid #fff;
+    text-shadow: 0 2px 0 #000, -10px 10px 10px #000;
     font-family: 'Sanchez', serif;
     font-size: 2.5em;
+}
+#ei_socialMedia {
+    z-index: 9999;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
 }
 #ei_menu {
     position: absolute;
@@ -25,7 +40,7 @@ body {
     cursor: pointer;
     margin-top: 20px;
     padding: 10px;
-    color: #999;
+    color: #4f4;
     border-radius: 5px 5px 0 0;
     border-bottom: 1px dotted #555;
     font-family: 'Special Elite', sans-serif;
@@ -45,7 +60,7 @@ body {
     color: #aaa;
 }
 
-#ei_pedalVideo {
+#ei_ytVideo {
     position: absolute;
     right: 20px;
     top: 70px;
@@ -54,19 +69,28 @@ body {
     border:0;
     display: block;
 }
-#ei_pedalImage {
+#ei_ytImage {
     position: absolute;
     z-index: 999;
     top: -30px;
     right: 320px;
     display: none;
+    cursor: se-resize;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-#ei_description {
+#ei_ytDescription {
+    cursor: n-resize;
     font-family: Cardboard;
     position: absolute;
     z-index: 999;
-    top: 350px;
-    right: 20px;
+    top: 250px;
+    right: 50px;
     width: 390px;
     padding-left: 10px;
     height: 120px;
@@ -74,13 +98,17 @@ body {
     text-shadow: 0 0 0 #000;
     font-size: 1.5em;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: -10px 10px 50px #000;
     background-image:url('../images/bkgs/cardboard.jpg');
     background-position: right top;
     background-repeat: no-repeat;
     display: none;
     
-    transform: rotate(10deg);
-    -webkit-transform: rotate(10deg);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
