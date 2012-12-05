@@ -35,11 +35,12 @@ $(function(){
         $('#ei_menu').append(menuItem); // Append to parent
     });
     
-    $(document).on('ei_inventoryReady', function(e, id, name, description, videoId, image, weight){
+    $(document).on('ei_inventoryReady', function(e, id, name, type, description, videoId, image, weight){
         inventoryReady = true;
         var row = {
             id: id,
             name: name,
+            type: type,
             description: description,
             videoId: videoId,
             image: image
@@ -48,21 +49,44 @@ $(function(){
     });
     
     $(document).on('ei_showInventory',function(e, id){
-        console.log(inventory);
+        var pedalMods   = [],   // Pedal Mods
+            ampMods     = [];   // Amp Mods
+        
+        for(var i=0; i < inventory.length; i++){
+            switch(inventory[i].type){
+                case 'pedal':
+                    pedalMods.push(inventory[i]);
+                    break;
+                case 'amp':
+                    ampMods.push(inventory[i]);
+            }
+        }
+        
         switch(id) {
             case 'pedalMods':
+                var options = {
+                    caller: $('ei_pedalMods'),
+                    videoId: pedalMods[0].video,
+                    image: 'images/labels/' + pedalMods[0].image,
+                    description: pedalMods[0].description
+                };
+                eiVideoPlayer(options);
                 break;
             case 'ampMods':
+                console.log(ampMods);
                 break;
         }
     });
     
     $(document).on('ei_pageMode', function(e, id){
+        var videoImage = $('#ei_ytImage');
+        var videoDescr = $('#ei_ytDescription');
         var videoBrowser = $('#ei_videoBrowser');
+        
         $('#ei_ytVideo').remove();
         videoBrowser.append($('<div />').attr('id','ei_ytVideo'));  // Refresh the YTVideo Box
         
-       switch(id) {
+        switch(id) {
             case 'home':
                 title.animate({
                     top: "100px",
@@ -71,7 +95,9 @@ $(function(){
                 menu.animate({
                     left: (body.width()/2)
                 });
-                videoBrowser.fadeOut();    // Hide the video Browser
+                videoBrowser.hide();     // Hide the video Browser
+                videoImage.fadeOut();       // Hide the video image
+                videoDescr.fadeOut();     // Hide the video description
                 break;
             case 'pedalMods':
                 title.animate({
@@ -82,6 +108,8 @@ $(function(){
                     left: 10
                 });
                 videoBrowser.fadeIn();    // Show the video Browser
+                videoImage.fadeIn();    
+                videoDescr.fadeIn();
                 $(document).trigger('ei_showInventory', id);
                 break;
             case 'ampMods':
@@ -93,7 +121,7 @@ $(function(){
                     left: 10
                 });
                 videoBrowser.fadeIn();    // Show the video Browser
-                $(document).trigger('ei_showInventory');
+                $(document).trigger('ei_showInventory', id);
                 break;
             default:
                 break;

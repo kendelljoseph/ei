@@ -8,19 +8,6 @@ body {
     background-repeat: no-repeat;
     background-color: #000;
 }
-#ei_videoBrowser {
-    position: absolute;
-    right: 20px;
-    top: 70px;
-    width: 500px;
-    height: 300px;
-    background-color: #f00;
-    display: none;
-}
-iframe {
-    box-shadow: -10px 20px 30px #000;
-    background-color: #000;
-}
 
 #ei_title {
     position:absolute;
@@ -83,15 +70,27 @@ iframe {
     color: #aaa;
 }
 
+iframe {
+    box-shadow: -10px 20px 30px #000;
+    background-color: #000;
+}
+#ei_videoBrowser {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    width: 500px;
+    height: 300px;
+    background-color: #f00;
+    display: none;
+}
+
 #ei_ytVideo {
     position: absolute;
-    margin: 0;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 70px;
     width: 500px;
     height: 300px;
     border:0;
-    display: block;
     background-color: #000;
 }
 #ei_ytImage {
