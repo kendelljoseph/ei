@@ -35,7 +35,7 @@ $(function(){
         $('#ei_menu').append(menuItem); // Append to parent
     });
     
-    $(document).on('ei_inventoryReady', function(e, id, name, type, description, videoId, image, weight){
+    $(document).on('ei_inventoryReady', function(e, id, name, type, description, videoId, image){
         inventoryReady = true;
         var row = {
             id: id,
@@ -43,14 +43,15 @@ $(function(){
             type: type,
             description: description,
             videoId: videoId,
-            image: image
+            image: image,
         };
         inventory.push(row); // Hold inventory values as row objects
     });
     
     $(document).on('ei_showInventory',function(e, id){
         var pedalMods   = [],   // Pedal Mods
-            ampMods     = [];   // Amp Mods
+            ampMods     = [],   // Amp Mods
+            onTable     = [];
         
         for(var i=0; i < inventory.length; i++){
             switch(inventory[i].type){
@@ -59,22 +60,41 @@ $(function(){
                     break;
                 case 'amp':
                     ampMods.push(inventory[i]);
+                    break;
+                case 'onTable':
+                    onTable.push(inventory[i]);
+                    break;
             }
         }
         
         switch(id) {
             case 'pedalMods':
                 var options = {
-                    caller: $('ei_pedalMods'),
-                    videoId: pedalMods[0].video,
+                    caller: $('#ei_pedalMods'),
+                    videoId: pedalMods[0].videoId,
                     image: 'images/labels/' + pedalMods[0].image,
                     description: pedalMods[0].description
                 };
                 eiVideoPlayer(options);
                 break;
             case 'ampMods':
-                console.log(ampMods);
+                var options = {
+                    caller: $('#ei_ampMods'),
+                    videoId: ampMods[0].videoId,
+                    image: 'images/labels/' + ampMods[0].image,
+                    description: ampMods[0].description
+                };
+                eiVideoPlayer(options);
                 break;
+            case 'onTable':
+                var options = {
+                    caller: $('#ei_onTable'),
+                    videoId: onTable[0].videoId,
+                    image: 'images/labels/' + onTable[0].image,
+                    description: onTable[0].description
+                };
+                eiVideoPlayer(options);
+                break;    
         }
     });
     
@@ -88,7 +108,8 @@ $(function(){
         
         switch(id) {
             case 'home':
-                title.animate({
+                title.html('Eilers Innovations')
+                    .animate({
                     top: "100px",
                     left: (body.width()/2 - title.width()/2)
                 });
@@ -123,7 +144,29 @@ $(function(){
                 videoBrowser.fadeIn();    // Show the video Browser
                 $(document).trigger('ei_showInventory', id);
                 break;
+            case 'onTable':
+                title.animate({
+                    top: 0,
+                    left: 10
+                });
+                menu.animate({
+                    left: 10
+                });
+                videoBrowser.fadeIn();    // Show the video Browser
+                $(document).trigger('ei_showInventory', id);
+                break;
             default:
+                title.html('Eilers Innovations')
+                    .animate({
+                    top: "100px",
+                    left: (body.width()/2 - title.width()/2)
+                });
+                menu.animate({
+                    left: (body.width()/2)
+                });
+                videoBrowser.hide();     // Hide the video Browser
+                videoImage.fadeOut();       // Hide the video image
+                videoDescr.fadeOut();     // Hide the video description
                 break;
        }
     });
@@ -140,10 +183,6 @@ $(function(){
         eiVideoPlayer(options);
     }
     
-    var onTheTable = $('<div />')
-                .attr('id', 'ei_onTheTale')
-                .attr('class','ei_menuItem')
-                .html('On the Table');
     var pedalMods = $('<div />')
                 .attr('id', 'ei_pedalMods')
                 .attr('class','ei_menuItem')
@@ -289,37 +328,5 @@ $(function(){
             }
         });
     }
-
-    onTheTable.click(function(){
-        var descriptionText = "Boss DD-3 EI Mod currrently on the table by Eilers Innovations";
-        var options = {
-            caller: $(this),
-            videoId: '6JBvclCDynk',
-            image: 'images/labels/bossdd3.png',
-            description: descriptionText
-        };
-        eiVideoPlayer(options);
-    });
     
-    pedalMods.click(function(){
-        var descriptionText = "The \"Blue Jay\" is an Eilers Innovations original I made last year for John Doe(?) of Sweet Band(?) in 2012.";
-        var options = {
-            caller: $(this),
-            videoId: 'Lf7frCzDBS8',
-            image: 'images/labels/bluejay.png',
-            description: descriptionText
-        };
-        eiVideoPlayer(options);
-    });
-    
-    ampMods.click(function(){
-        var descriptionText = 'This is a Carvin MTS3200 Mod where I changed a thing(?) and anotherThing(?) by Eilers Innovations.';
-        var options = {
-            caller: $(this),
-            videoId: 'HiHSNaqpfUs',
-            image: 'images/labels/carvinMTS3200.png',
-            description: descriptionText
-        };
-        eiVideoPlayer(options);
-    });
 });
