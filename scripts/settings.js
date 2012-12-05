@@ -15,31 +15,33 @@ $(function(){
                 INVENTORY_KEY + "/od7/public/values?alt=json";
     
     getGSS(GSS_MAINMENU,menuHandler);
-    //getGSS(GSS_SETTINGS,settingsHandler);
+    getGSS(GSS_SETTINGS,settingsHandler);
     
     getGSS(GSS_INVENTORY,inventoryHandler);
-    //getGSS(GSS_REVIEWS,reviewsHandler);
+    getGSS(GSS_REVIEWS,reviewsHandler);
     
     function menuHandler(data){
         for(var i=0; i < data.length; i++){
             $(document).trigger('ei_menuReady', data[i]);    
         }
+        console.log('Menu GSS Retrieved!')
     }
     function settingsHandler(data){
-        console.log(data);
         for(var i=0; i < data.length; i++){
             $(document).trigger('ei_settingsReady', data[i]);    
         }
+        console.log('Settings GSS Retrieved!')
     }
     function inventoryHandler(data){
         for(var i=0; i < data.length; i++){
             $(document).trigger('ei_inventoryReady', data[i]);    
         }
+        console.log('Inventory GSS Retrieved!');
     }
     function reviewsHandler(data){
-        console.log(data);
         for(var i=0; i < data.length; i++){
             $(document).trigger('ei_reviewsReady', data[i]);    
         }
+        console.log('Reviews GSS Retrieved!');
     }
 });

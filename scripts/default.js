@@ -199,7 +199,6 @@ $(function(){
     var twitterImage = $('<img />')
                 .attr('id', 'ei_twtrImage')
                 .attr("src", 'images/twitter.png');
-                
     var image = $('<img />')
                 .attr('id', 'ei_ytImage');
     var description = $('<div />')
@@ -235,7 +234,6 @@ $(function(){
                 animateTo: -360
             });   
         },15000);
-        
     }
     
     /*  
@@ -261,7 +259,6 @@ $(function(){
         .append(socialMedia);   // I put the social Media box into the body of the page
     
     arrangeElements();  // These types of calls should be run based on a load event
-    
     
     /* 
     *   This is the video player, and kind of the heart of the page. This is
@@ -328,5 +325,4 @@ $(function(){
             }
         });
     }
-    
 });
