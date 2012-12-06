@@ -82,6 +82,31 @@ iframe {
     height: 300px;
     display: none;
 }
+#ei_nextVideo {
+    z-index: 100;
+    position: absolute;
+    right: 20px;
+    top: 400px;
+    width: 75%;
+    border-radius: 2px;
+}
+.ei_inventoryImage {
+    cursor: pointer;
+    border-radius: 100%;
+    float: right;
+    transform: rotate(15deg);
+    -ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Safari and Chrome */
+    -o-transform: rotate(15deg); /* Opera */
+    -moz-transform: rotate(15deg); /* Firefox */
+}
+.ei_inventoryImage:hover {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Safari and Chrome */
+    -o-transform: rotate(0deg); /* Opera */
+    -moz-transform: rotate(0deg); /* Firefox */
+}
 
 #ei_ytVideo {
     position: absolute;
@@ -144,67 +169,91 @@ iframe {
 }
 
 .aboutUs {
-    font-family: 'Homemade Apple';
-    font-size: 1em;
-    text-align: center;
-    border: 1px solid #fff;
     margin: 20px;
     display: none;
 }
-#ei_aboutUsName_1 {
+.ei_aboutUsImage {
+    z-index: 50;
     position: absolute;
-    top: 0;
-    right: 10px;
-    color: #ff0;
+    right: 55%;
 }
-#ei_aboutUsImage_1 {
+.ei_aboutUsName {
+    z-index: 100;
+    position: absolute;
+    font-family: 'Homemade Apple';
+    font-size: 2em;
+    padding: 0 10px 0 10px;
+    color: #222;
+    text-shadow: 0 0 0 #000;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: -10px 10px 20px #000;
+    
+    background-image:url('../images/bkgs/cardboard.jpg');
+    background-repeat: no-repeat;
+    
+    transform: rotate(15deg);
+    -ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Safari and Chrome */
+    -o-transform: rotate(15deg); /* Opera */
+    -moz-transform: rotate(15deg); /* Firefox */
     
 }
-#ei_aboutUsBio_1 {
+.ei_aboutUsBio {
+    z-index: 0;
+    position: absolute;
+    font-family: 'Sanchez', serif;
+    font-size: 1em;
+    width: 50%;
+    right: 20px;
+}
 
+#ei_aboutUsName_1 {
+    top: 400px;
+    right: 20px;
+    display: block;
+}
+#ei_aboutUsImage_1 {
+    top: 240px;
+    right: 0;
+    border-radius: 10px;
+    display: block;
+}
+#ei_aboutUsBio_1 {
+    top: 300px;
+    right: 175px;
+    display: block;
 }
 
 #ei_aboutUsName_2 {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    color: #0f0;
-    
+    top: 600px;
+    right: 55%;
+    display: block;
 }
 #ei_aboutUsImage_2 {
+    top: 440px;
+    border-radius: 10px;
+    display: block;
 }
 #ei_aboutUsBio_2 {
-    
+    top: 600px;
+    display: block;
 }
 
 #ei_aboutUsName_0 {
-    z-index: 100;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #f00;
+    top: 160px;
+    right: 55%;
     display: block;
 }
-.ei_aboutUsImage {
-    position: absolute;
-}
-.ei_aboutUsName {
-    position: absolute;
-}
-.ei_aboutUsBio {
-    position: absolute;
-}
 #ei_aboutUsImage_0 {
-    z-index: 50;
-    position: absolute;
-    top: 0px;
-    left: 10px;
+    top: 0;
     border-radius: 10px;
     display: block;
     
 }
 #ei_aboutUsBio_0 {
-    z-index: 0;
+    top: 10px;
     display: block;
 }
 

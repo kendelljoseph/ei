@@ -31,6 +31,8 @@ $(function(){
     var tableImage = $('<img />')
                 .attr('src', 'images/table.png')
                 .attr('id', 'ei_tableImage');
+    var nextVideo = $('<div />')
+                .attr('id', 'ei_nextVideo');
     var aboutUsBox = $('<div />')
                 .attr('id', 'ei_aboutUs');
     
@@ -98,10 +100,10 @@ $(function(){
         if(inventoryReady){
             for(var i=0; i < inventory.length; i++){
                 switch(inventory[i].type){
-                    case 'pedal':
+                    case 'pedalMods':
                         pedalMods.push(inventory[i]);
                         break;
-                    case 'amp':
+                    case 'ampMods':
                         ampMods.push(inventory[i]);
                         break;
                     case 'onTable':
@@ -110,6 +112,33 @@ $(function(){
                 }
             }
         }
+        
+        function showNextVideo(){
+            nextVideo.html('');
+            for(var j=0; j < inventory.length; j++){
+                if(inventory[j].type == id){
+                    var newImage = $('<img />').attr('src', ("images/labels/" + inventory[j].image))
+                        .addClass('ei_inventoryImage')
+                        .click(function(){ // Need to get this working
+                            /*  
+                            nextVideo.html('');
+                            var options = {
+                                caller: $('#ei_' + id),
+                                videoId: inventory[j].videoId,
+                                image: 'images/labels/' + inventory[j].image,
+                                description: inventory[j].description
+                            };
+                            eiVideoPlayer(options);
+                            
+                            showNextVideo();
+                            */
+                        });
+                    nextVideo.append(newImage);
+                }
+            }
+        }
+        
+        showNextVideo();
         
         switch(id) {
             case 'pedalMods':
@@ -154,29 +183,36 @@ $(function(){
         function toggleVideo(){
         
         }
+        
         function hideAll(){
             videoBrowser.hide();     // Hide the video Browser
             videoImage.fadeOut();       // Hide the video image
             videoDescr.fadeOut();     // Hide the video description
             tableImage.fadeOut();
             aboutUsBox.fadeOut();
+            nextVideo.hide();
         }
         function hideVideo(){
             videoBrowser.hide();
             videoImage.fadeOut();
             videoDescr.fadeOut();
+            aboutUsBox.fadeOut();
+            nextVideo.hide();
         }
         
         function showJustVideo(){
             videoBrowser.fadeIn();    // Show the video Browser
             videoImage.fadeIn();    
             videoDescr.fadeIn();
+            nextVideo.fadeIn();
             tableImage.fadeOut();
+            aboutUsBox.fadeOut();
         }
         function showVideo(){
             videoBrowser.fadeIn();    // Show the video Browser
             videoImage.fadeIn();    
             videoDescr.fadeIn();
+            nextVideo.fadeIn();
         }
         
         function showAboutUs(){
@@ -203,8 +239,6 @@ $(function(){
                     
                 aboutUsBox.append([aboutUsBio, aboutUsImage, abutUsName]);
             }
-            
-            
         }
         
         switch(id) {
@@ -336,6 +370,7 @@ $(function(){
         .append(menu)           // I put the menu box into the body of the page
         .append(videoBrowser)
         .append(tableImage)
+        .append(nextVideo)
         .append(aboutUsBox)
         .append(image)          // I put the image into the body of the page
         .append(description)    // I put the description into the body of the page
