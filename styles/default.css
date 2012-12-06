@@ -135,3 +135,89 @@ iframe {
     -ms-user-select: none;
     user-select: none;
 }
+#ei_tableImage {
+    z-index: -1;
+    position: absolute;
+    top: 340px;
+    right: 0;
+    display: none;
+}
+
+.aboutUs {
+    font-family: 'Homemade Apple';
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid #fff;
+    margin: 20px;
+    display: none;
+}
+#ei_aboutUsName_1 {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    color: #ff0;
+}
+#ei_aboutUsImage_1 {
+    
+}
+#ei_aboutUsBio_1 {
+
+}
+
+#ei_aboutUsName_2 {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: #0f0;
+    
+}
+#ei_aboutUsImage_2 {
+}
+#ei_aboutUsBio_2 {
+    
+}
+
+#ei_aboutUsName_0 {
+    z-index: 100;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #f00;
+    display: block;
+}
+.ei_aboutUsImage {
+    position: absolute;
+}
+.ei_aboutUsName {
+    position: absolute;
+}
+.ei_aboutUsBio {
+    position: absolute;
+}
+#ei_aboutUsImage_0 {
+    z-index: 50;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    border-radius: 10px;
+    display: block;
+    
+}
+#ei_aboutUsBio_0 {
+    z-index: 0;
+    display: block;
+}
+
+#ei_aboutUs {
+    z-index: -1;
+    position: absolute;
+    top: 200px;
+    right: 300px;
+    width: 66%;
+    height: 100%;
+    border-radius: 100% 100% 0 0;
+    border-top: 1px solid #000;
+    box-shadow: inset 100px 100px 200px #000, -10px -10px 40px #111;
+    display: none;
+    
+}

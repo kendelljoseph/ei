@@ -4,22 +4,62 @@
 */
 
 $(function(){
-    
     /* 
     *   Here we create all our page elments, most are divs, this should be
     *   combined into one thing that creates all these things automatically.
     */
-    var body =  $('body');                  // Document Body
-    var title = $('<div />')                // Title
+    var body =  $('body');
+    var title = $('<div />')
                 .attr('id','ei_title')
                 .html('Eilers Innovations');
-    var menu = $('<div />')                 // Main Menu
+    var menu = $('<div />')
                 .attr('id', 'ei_menu');
     var videoBrowser = $('<div />')
                 .attr('id', 'ei_videoBrowser');
-                
+    var socialMedia = $('<div />')
+                .attr('id', 'ei_socialMedia');
+    var facebookImage = $('<img />')
+                .attr('id', 'ei_fbImage')
+                .attr("src", 'images/facebook.png');
+    var twitterImage = $('<img />')
+                .attr('id', 'ei_twtrImage')
+                .attr("src", 'images/twitter.png');
+    var image = $('<img />')
+                .attr('id', 'ei_ytImage');
+    var description = $('<div />')
+                .attr('id', 'ei_ytDescription');
+    var tableImage = $('<img />')
+                .attr('src', 'images/table.png')
+                .attr('id', 'ei_tableImage');
+    var aboutUsBox = $('<div />')
+                .attr('id', 'ei_aboutUs');
+    
     var inventoryReady = false;
-    var inventory = [];
+    var inventory   = [];
+    var aboutUs     = [];
+    var greetings   = [];
+    
+    // READY HANDLERS
+    // Async build of the front page options
+    $(document).on('ei_frontPageReady', function(e, id, type, description){
+        var greeting = {
+            id: id,
+            type: type,
+            description: description
+        };
+        greetings.push(greeting);
+    });
+    
+    // Async build of about us page
+    $(document).on('ei_aboutUsReady', function(e, name, bio, image, weight){
+        var employee = {
+            name: name,
+            bio: bio,
+            image: image,
+            weight: weight
+        };
+        aboutUs.push(employee);
+    });
     
     // Async build of the main menu options
     $(document).on('ei_menuReady', function(e, id, html, weight){
@@ -35,6 +75,7 @@ $(function(){
         $('#ei_menu').append(menuItem); // Append to parent
     });
     
+    // Async build of inventory
     $(document).on('ei_inventoryReady', function(e, id, name, type, description, videoId, image){
         inventoryReady = true;
         var row = {
@@ -48,22 +89,25 @@ $(function(){
         inventory.push(row); // Hold inventory values as row objects
     });
     
+    // SHOW INVENTORY VIDEO HANDLER
+    // Show the inventory of items (also divides by type)
     $(document).on('ei_showInventory',function(e, id){
         var pedalMods   = [],   // Pedal Mods
             ampMods     = [],   // Amp Mods
             onTable     = [];
-        
-        for(var i=0; i < inventory.length; i++){
-            switch(inventory[i].type){
-                case 'pedal':
-                    pedalMods.push(inventory[i]);
-                    break;
-                case 'amp':
-                    ampMods.push(inventory[i]);
-                    break;
-                case 'onTable':
-                    onTable.push(inventory[i]);
-                    break;
+        if(inventoryReady){
+            for(var i=0; i < inventory.length; i++){
+                switch(inventory[i].type){
+                    case 'pedal':
+                        pedalMods.push(inventory[i]);
+                        break;
+                    case 'amp':
+                        ampMods.push(inventory[i]);
+                        break;
+                    case 'onTable':
+                        onTable.push(inventory[i]);
+                        break;
+                }
             }
         }
         
@@ -98,6 +142,7 @@ $(function(){
         }
     });
     
+    // POSITION HANDLER
     $(document).on('ei_pageMode', function(e, id){
         var videoImage = $('#ei_ytImage');
         var videoDescr = $('#ei_ytDescription');
@@ -105,6 +150,62 @@ $(function(){
         
         $('#ei_ytVideo').remove();
         videoBrowser.append($('<div />').attr('id','ei_ytVideo'));  // Refresh the YTVideo Box
+        
+        function toggleVideo(){
+        
+        }
+        function hideAll(){
+            videoBrowser.hide();     // Hide the video Browser
+            videoImage.fadeOut();       // Hide the video image
+            videoDescr.fadeOut();     // Hide the video description
+            tableImage.fadeOut();
+            aboutUsBox.fadeOut();
+        }
+        function hideVideo(){
+            videoBrowser.hide();
+            videoImage.fadeOut();
+            videoDescr.fadeOut();
+        }
+        
+        function showJustVideo(){
+            videoBrowser.fadeIn();    // Show the video Browser
+            videoImage.fadeIn();    
+            videoDescr.fadeIn();
+            tableImage.fadeOut();
+        }
+        function showVideo(){
+            videoBrowser.fadeIn();    // Show the video Browser
+            videoImage.fadeIn();    
+            videoDescr.fadeIn();
+        }
+        
+        function showAboutUs(){
+            aboutUsBox.html('');
+            aboutUsBox.fadeIn();
+            
+            for(var i=0; i < aboutUs.length; i++){
+                var row = aboutUs[i];
+                var abutUsName = $('<div />')
+                    .addClass('aboutUs')
+                    .addClass('ei_aboutUsName')
+                    .attr('id', 'ei_aboutUsName_' + i)
+                    .html(row.name);
+                var aboutUsBio  = $('<div />')
+                    .addClass('aboutUs')
+                    .addClass('ei_aboutUsBio')
+                    .attr('id', 'ei_aboutUsBio_' + i)
+                    .html(row.bio);
+                var aboutUsImage = $('<img />')
+                    .addClass('aboutUs')
+                    .addClass('ei_aboutUsImage')
+                    .attr('id', 'ei_aboutUsImage_' + i)
+                    .attr("src", row.image);
+                    
+                aboutUsBox.append([aboutUsBio, aboutUsImage, abutUsName]);
+            }
+            
+            
+        }
         
         switch(id) {
             case 'home':
@@ -116,9 +217,20 @@ $(function(){
                 menu.animate({
                     left: (body.width()/2)
                 });
-                videoBrowser.hide();     // Hide the video Browser
-                videoImage.fadeOut();       // Hide the video image
-                videoDescr.fadeOut();     // Hide the video description
+                hideAll();  // Hide Everything Else
+                break;
+            case 'about':
+                title.html($('#ei_about').html())
+                    .animate({
+                    top: "100px",
+                    left: (body.width()/2 - title.width()/2)
+                });
+                menu.animate({
+                    left: (body.width() - (menu.width() + 20))
+                });
+                hideAll();       // Hide Everything else
+                showAboutUs();
+                $(document).trigger('ei_showInventory', id);
                 break;
             case 'pedalMods':
                 title.animate({
@@ -128,9 +240,8 @@ $(function(){
                 menu.animate({
                     left: 10
                 });
-                videoBrowser.fadeIn();    // Show the video Browser
-                videoImage.fadeIn();    
-                videoDescr.fadeIn();
+                hideAll();      // Hide Everything Else
+                showJustVideo();
                 $(document).trigger('ei_showInventory', id);
                 break;
             case 'ampMods':
@@ -141,7 +252,8 @@ $(function(){
                 menu.animate({
                     left: 10
                 });
-                videoBrowser.fadeIn();    // Show the video Browser
+                hideAll();
+                showJustVideo();
                 $(document).trigger('ei_showInventory', id);
                 break;
             case 'onTable':
@@ -152,7 +264,8 @@ $(function(){
                 menu.animate({
                     left: 10
                 });
-                videoBrowser.fadeIn();    // Show the video Browser
+                hideVideo();
+                showVideo();
                 $(document).trigger('ei_showInventory', id);
                 break;
             default:
@@ -164,46 +277,13 @@ $(function(){
                 menu.animate({
                     left: (body.width()/2)
                 });
-                videoBrowser.hide();     // Hide the video Browser
-                videoImage.fadeOut();       // Hide the video image
-                videoDescr.fadeOut();     // Hide the video description
+                hideAll();
                 break;
        }
     });
     
-    // Runs stuff
-    function menuHandler(){
-        var descriptionText = "Boss DD-3 EI Mod currrently on the table by Eilers Innovations";
-        var options = {
-            caller: $(this),
-            videoId: '6JBvclCDynk',
-            image: 'images/labels/bossdd3.png',
-            description: descriptionText
-        };
-        eiVideoPlayer(options);
-    }
     
-    var pedalMods = $('<div />')
-                .attr('id', 'ei_pedalMods')
-                .attr('class','ei_menuItem')
-                .html('Pedal Modifications');
-    var ampMods = $('<div />')
-                .attr('id', 'ei_ampMods')
-                .attr('class','ei_menuItem')
-                .html('Amp Modifications');
-    var socialMedia = $('<div />')
-                .attr('id', 'ei_socialMedia');
-    var facebookImage = $('<img />')
-                .attr('id', 'ei_fbImage')
-                .attr("src", 'images/facebook.png');
-    var twitterImage = $('<img />')
-                .attr('id', 'ei_twtrImage')
-                .attr("src", 'images/twitter.png');
-    var image = $('<img />')
-                .attr('id', 'ei_ytImage');
-    var description = $('<div />')
-                .attr('id', 'ei_ytDescription');
-    
+    // BULLSHIT
     /*
     *   Another Idea (bottom -> top) that could be combined, all seem to have
     *   to do with the position of elements. The final idea could also be
@@ -222,6 +302,7 @@ $(function(){
     function arrangeElements(){
         centerElement(title);
         centerElement(menu);
+        
         setInterval(function(){
             twitterImage.rotate({
                 duration: 8000,
@@ -254,6 +335,8 @@ $(function(){
     body.append(title)          // I put the title into the body of the page
         .append(menu)           // I put the menu box into the body of the page
         .append(videoBrowser)
+        .append(tableImage)
+        .append(aboutUsBox)
         .append(image)          // I put the image into the body of the page
         .append(description)    // I put the description into the body of the page
         .append(socialMedia);   // I put the social Media box into the body of the page
