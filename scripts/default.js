@@ -119,6 +119,7 @@ $(function(){
                 if(inventory[j].type == id){
                     var newImage = $('<img />').attr('src', ("images/labels/" + inventory[j].image))
                         .addClass('ei_inventoryImage')
+                        // Add an event listner? Not sure what's going wrong here.
                         .click(function(){ // Need to get this working
                             /*  
                             nextVideo.html('');

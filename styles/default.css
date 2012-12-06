@@ -85,15 +85,14 @@ iframe {
 #ei_nextVideo {
     z-index: 100;
     position: absolute;
-    right: 20px;
-    top: 400px;
-    width: 75%;
+    right: 40px;
+    top: 420px;
+    width: 55%;
     border-radius: 2px;
+    display: none;
 }
 .ei_inventoryImage {
     cursor: pointer;
-    border-radius: 100%;
-    float: right;
     transform: rotate(15deg);
     -ms-transform: rotate(15deg); /* IE 9 */
     -webkit-transform: rotate(15deg); /* Safari and Chrome */
