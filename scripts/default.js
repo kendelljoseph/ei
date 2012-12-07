@@ -204,13 +204,38 @@ jQuery(function($){
         function resetSocialBox(){
             $('#ei_twitter').css({
                 top: 'auto',
-                bottom:'20px',
+                bottom:'0px',
                 position: 'fixed'
             });
             $('#facebook').css({
                 top: 'auto',
-                bottom:'90px',
+                bottom:'80px',
                 position: 'fixed'
+            });
+        }
+        
+        function bigFacebook(){
+            $('#ei_twitter').fadeOut();
+            
+            $('#facebook').fadeOut();
+            $('#facebook-wall').fadeIn();
+            
+            $('#ei_socialMedia').css({
+                right: '10px',
+                left: 'auto'
+            });
+            
+        }
+        
+        function smallFacebook(){
+            $('#ei_twitter').fadeIn();
+            
+            $('#facebook-wall').fadeOut();
+            $('#facebook').fadeIn();
+            
+            $('#ei_socialMedia').css({
+                right: 'auto',
+                left: '10px'
             });
         }
         
@@ -222,6 +247,7 @@ jQuery(function($){
             aboutUsBox.fadeOut();
             nextVideo.hide();
             resetSocialBox();
+            smallFacebook();
             
         }
         function hideVideo(){
@@ -231,6 +257,7 @@ jQuery(function($){
             aboutUsBox.fadeOut();
             nextVideo.hide();
             resetSocialBox();
+            smallFacebook();
         }
         
         function showJustVideo(){
@@ -245,6 +272,8 @@ jQuery(function($){
             videoBrowser.fadeIn();    // Show the video Browser
             videoImage.fadeIn();    
             videoDescr.fadeIn();
+            tableImage.fadeIn();
+            aboutUsBox.fadeOut();
             nextVideo.fadeIn();
         }
         
@@ -294,6 +323,7 @@ jQuery(function($){
                     left: (body.width()/2)
                 });
                 hideAll();  // Hide Everything Else
+                bigFacebook();
                 break;
             case 'about':
                 title.html($('#ei_about').html())
