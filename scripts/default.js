@@ -201,8 +201,17 @@ jQuery(function($){
         $('#ei_ytVideo').remove();
         videoBrowser.append($('<div />').attr('id','ei_ytVideo'));  // Refresh the YTVideo Box
         
-        function toggleVideo(){
-        
+        function resetSocialBox(){
+            $('#ei_twitter').css({
+                top: 'auto',
+                bottom:'20px',
+                position: 'fixed'
+            });
+            $('#facebook').css({
+                top: 'auto',
+                bottom:'90px',
+                position: 'fixed'
+            });
         }
         
         function hideAll(){
@@ -212,6 +221,8 @@ jQuery(function($){
             tableImage.fadeOut();
             aboutUsBox.fadeOut();
             nextVideo.hide();
+            resetSocialBox();
+            
         }
         function hideVideo(){
             videoBrowser.hide();
@@ -219,6 +230,7 @@ jQuery(function($){
             videoDescr.fadeOut();
             aboutUsBox.fadeOut();
             nextVideo.hide();
+            resetSocialBox();
         }
         
         function showJustVideo(){
@@ -237,6 +249,15 @@ jQuery(function($){
         }
         
         function showAboutUs(){
+            $('#ei_twitter').css({
+                top:'40px',
+                position: 'absolute'
+            });
+            $('#facebook').css({
+                top:'100px',
+                position: 'absolute'
+            });
+            
             aboutUsBox.html('');
             aboutUsBox.fadeIn();
             
