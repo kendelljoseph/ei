@@ -328,7 +328,7 @@ iframe {
 
 #facebook {
     position: fixed;
-    top: 60px;
+    bottom: 90px;
     left: 10px;
 }
     #facebook span iframe {
