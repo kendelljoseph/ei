@@ -278,7 +278,8 @@ jQuery(function($){
                 title.html($('#ei_about').html())
                     .animate({
                     top: "100px",
-                    left: (body.width()/2 - title.width()/2)
+                    left: (body.width()/2 - title.width()/2),
+                    height: "1000px"
                 });
                 menu.animate({
                     left: (body.width() - (menu.width() + 20))
