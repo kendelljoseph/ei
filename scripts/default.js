@@ -3,7 +3,7 @@
 *   Eventually I'll comment this thing...
 */
 
-$(function(){
+jQuery(function($){
     /* 
     *   Here we create all our page elments, most are divs, this should be
     *   combined into one thing that creates all these things automatically.
@@ -20,10 +20,16 @@ $(function(){
                 .attr('id', 'ei_socialMedia');
     var facebookImage = $('<img />')
                 .attr('id', 'ei_fbImage')
-                .attr("src", 'images/facebook.png');
+                .attr("src", 'images/facebook.png')
+                .click(function(){
+                    document.location.href = 'http://www.facebook.com/eilersinnovations';
+                });
     var twitterImage = $('<img />')
                 .attr('id', 'ei_twtrImage')
-                .attr("src", 'images/twitter.png');
+                .attr("src", 'images/twitter.png')
+                .click(function(){
+                    document.location.href = 'http://twitter.com/eidocj';
+                });
     var image = $('<img />')
                 .attr('id', 'ei_ytImage');
     var description = $('<div />')
@@ -35,6 +41,20 @@ $(function(){
                 .attr('id', 'ei_nextVideo');
     var aboutUsBox = $('<div />')
                 .attr('id', 'ei_aboutUs');
+    var twitterBox = $('<div />')
+                .attr('id', 'ei_twitter')
+                .tweet({
+          join_text: "auto",
+          username: "eidocj",
+          avatar_size: 48,
+          count: 1,
+          auto_join_text_default: " ",
+          auto_join_text_ed: " ",
+          auto_join_text_ing: " ",
+          auto_join_text_reply: " ",
+          auto_join_text_url: " ",
+          loading_text: "loading tweets..."
+        });
     
     var inventoryReady = false;
     var inventory   = [];
@@ -119,20 +139,20 @@ $(function(){
                 if(inventory[j].type == id){
                     var newImage = $('<img />').attr('src', ("images/labels/" + inventory[j].image))
                         .addClass('ei_inventoryImage')
+                        .attr("videoNumber", j)
                         // Add an event listner? Not sure what's going wrong here.
-                        .click(function(){ // Need to get this working
-                            /*  
+                        .click(function(){  // Need to get this working
                             nextVideo.html('');
+                            var videoNumber = $(this).attr('videoNumber');
                             var options = {
                                 caller: $('#ei_' + id),
-                                videoId: inventory[j].videoId,
-                                image: 'images/labels/' + inventory[j].image,
-                                description: inventory[j].description
+                                videoId: inventory[videoNumber].videoId,
+                                image: 'images/labels/' + inventory[videoNumber].image,
+                                description: inventory[videoNumber].description
                             };
                             eiVideoPlayer(options);
                             
                             showNextVideo();
-                            */
                         });
                     nextVideo.append(newImage);
                 }
@@ -373,6 +393,7 @@ $(function(){
         .append(tableImage)
         .append(nextVideo)
         .append(aboutUsBox)
+        .append(twitterBox)
         .append(image)          // I put the image into the body of the page
         .append(description)    // I put the description into the body of the page
         .append(socialMedia);   // I put the social Media box into the body of the page

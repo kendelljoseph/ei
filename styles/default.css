@@ -23,20 +23,8 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-#ei_socialMedia {
-    z-index: 9999;
-    position: fixed;
-    bottom: 10px;
-    right: 20px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 #ei_menu {
-    position: absolute;
+    position: fixed;
     top: 160px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -88,11 +76,13 @@ iframe {
     right: 40px;
     top: 420px;
     width: 55%;
+    text-align: center;
     border-radius: 2px;
     display: none;
 }
 .ei_inventoryImage {
     cursor: pointer;
+    opacity: .8;
     transform: rotate(15deg);
     -ms-transform: rotate(15deg); /* IE 9 */
     -webkit-transform: rotate(15deg); /* Safari and Chrome */
@@ -100,6 +90,7 @@ iframe {
     -moz-transform: rotate(15deg); /* Firefox */
 }
 .ei_inventoryImage:hover {
+    opacity: 1;
     transform: rotate(0deg);
     -ms-transform: rotate(0deg); /* IE 9 */
     -webkit-transform: rotate(0deg); /* Safari and Chrome */
@@ -220,7 +211,7 @@ iframe {
     display: block;
 }
 #ei_aboutUsBio_1 {
-    top: 300px;
+    top: 280px;
     right: 175px;
     display: block;
 }
@@ -236,7 +227,7 @@ iframe {
     display: block;
 }
 #ei_aboutUsBio_2 {
-    top: 600px;
+    top: 500px;
     display: block;
 }
 
@@ -269,3 +260,67 @@ iframe {
     display: none;
     
 }
+
+#ei_socialMedia {
+    z-index: 9999;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    #ei_socialMedia > img:hover {
+        cursor: pointer;
+        border-radius: 100%;
+        box-shadow: 0 0 10px 10px #0f0;
+    }
+
+#ei_twitter {
+    position: fixed;
+    z-index: 100;
+    bottom: 20px;
+    left: 120px;
+}
+
+    .tweet_list {
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    border-radius: 0.5em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    font-family: 'Sanchez', serif;
+    }
+    
+        .tweet_list li {
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0.5em;
+        list-style-type: none;
+        }
+            .tweet_list li a {
+            color: #055;
+            text-decoration: none;
+            }
+            .tweet_list li a[title="view tweet on twitter"] {
+            color: #0f0;
+            text-decoration: none;
+            }
+        
+        .tweet_list .tweet_even {
+        
+        }
+        
+        .tweet_list .tweet_avatar {
+        padding-right: .5em; float: left;
+        display: none;
+        }
+        
+        .tweet_list .tweet_avatar img {
+        vertical-align: middle;
+        }
