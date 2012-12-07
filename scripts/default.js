@@ -319,9 +319,10 @@ jQuery(function($){
                     .animate({
                     top: "50px",
                     left: (body.width()/2 - title.width()/2)
-                });
+                }).css('position', 'absolute');
                 menu.animate({
-                    left: body.width() - 200
+                    left: body.width() - 200,
+                    top: 160
                 });
                 hideAll();  // Hide Everything Else
                 bigFacebook();
@@ -332,9 +333,10 @@ jQuery(function($){
                     top: "100px",
                     left: (body.width()/2 - title.width()/2),
                     height: "1000px"
-                });
+                }).css('position', 'absolute');
                 menu.animate({
-                    left: (body.width() - (menu.width() + 20))
+                    left: (body.width() - (menu.width() + 20)),
+                    top: 160
                 });
                 hideAll();       // Hide Everything else
                 showAboutUs();
@@ -344,9 +346,10 @@ jQuery(function($){
                 title.animate({
                     top: 0,
                     left: 10
-                });
+                }).css('position', 'fixed');
                 menu.animate({
-                    left: 10
+                    left: 10,
+                    top: 50
                 });
                 hideAll();      // Hide Everything Else
                 showJustVideo();
@@ -356,9 +359,10 @@ jQuery(function($){
                 title.animate({
                     top: 0,
                     left: 10
-                });
+                }).css('position', 'fixed');
                 menu.animate({
-                    left: 10
+                    left: 10,
+                    top: 50
                 });
                 hideAll();
                 showJustVideo();
@@ -368,9 +372,10 @@ jQuery(function($){
                 title.animate({
                     top: 0,
                     left: 10
-                });
+                }).css('position', 'fixed');
                 menu.animate({
-                    left: 10
+                    left: 10,
+                    top: 50
                 });
                 hideVideo();
                 showVideo();
@@ -379,11 +384,13 @@ jQuery(function($){
             default:
                 title.html('Eilers Innovations')
                     .animate({
+                    position: 'absolute',
                     top: "100px",
                     left: (body.width()/2 - title.width()/2)
                 });
                 menu.animate({
-                    left: (body.width()/2)
+                    left: (body.width()/2),
+                    top: 160
                 });
                 hideAll();
                 break;
