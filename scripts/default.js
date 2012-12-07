@@ -243,7 +243,7 @@ jQuery(function($){
             videoBrowser.hide();     // Hide the video Browser
             videoImage.fadeOut();       // Hide the video image
             videoDescr.fadeOut();     // Hide the video description
-            tableImage.fadeOut();
+            //tableImage.fadeOut();
             aboutUsBox.fadeOut();
             nextVideo.hide();
             resetSocialBox();
@@ -265,14 +265,14 @@ jQuery(function($){
             videoImage.fadeIn();    
             videoDescr.fadeIn();
             nextVideo.fadeIn();
-            tableImage.fadeOut();
+            //tableImage.fadeOut();
             aboutUsBox.fadeOut();
         }
         function showVideo(){
             videoBrowser.fadeIn();    // Show the video Browser
             videoImage.fadeIn();    
             videoDescr.fadeIn();
-            tableImage.fadeIn();
+            //tableImage.fadeIn();
             aboutUsBox.fadeOut();
             nextVideo.fadeIn();
         }
