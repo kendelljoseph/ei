@@ -358,18 +358,32 @@ jQuery(function($){
         centerElement(title);
         centerElement(menu);
         
+        twitterImage.rotate({
+            duration: 9000,
+            angle: 0,
+            animateTo: 360
+        });
+        facebookImage.rotate({
+            duration: 10000,
+            angle: 0,
+            animateTo: -360
+        });  
+        
         setInterval(function(){
             twitterImage.rotate({
-                duration: 8000,
+                duration: 9000,
                 angle: 0,
                 animateTo: 360
             });
+        },7000);
+        
+        setInterval(function(){
             facebookImage.rotate({
                 duration: 10000,
                 angle: 0,
                 animateTo: -360
             });   
-        },15000);
+        },8000);
     }
     
     /*  
