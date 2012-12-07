@@ -117,6 +117,7 @@ jQuery(function($){
         var pedalMods   = [],   // Pedal Mods
             ampMods     = [],   // Amp Mods
             onTable     = [];
+            pastProjects     = [];
         if(inventoryReady){
             for(var i=0; i < inventory.length; i++){
                 switch(inventory[i].type){
@@ -129,6 +130,9 @@ jQuery(function($){
                     case 'onTable':
                         onTable.push(inventory[i]);
                         break;
+                    case 'pastProjects':
+                        pastProjects.push(inventory[i]);
+                        break;    
                 }
             }
         }
@@ -140,8 +144,7 @@ jQuery(function($){
                     var newImage = $('<img />').attr('src', ("images/labels/" + inventory[j].image))
                         .addClass('ei_inventoryImage')
                         .attr("videoNumber", j)
-                        // Add an event listner? Not sure what's going wrong here.
-                        .click(function(){  // Need to get this working
+                        .click(function(){                                  // Got this working, but may require reworking later
                             nextVideo.html('');
                             var videoNumber = $(this).attr('videoNumber');
                             var options = {
@@ -186,6 +189,15 @@ jQuery(function($){
                     videoId: onTable[0].videoId,
                     image: 'images/labels/' + onTable[0].image,
                     description: onTable[0].description
+                };
+                eiVideoPlayer(options);
+                break;
+            case 'pastProjects':
+                var options = {
+                    caller: $('#ei_onTable'),
+                    videoId: pastProjects[0].videoId,
+                    image: 'images/labels/' + pastProjects[0].image,
+                    description: pastProjects[0].description
                 };
                 eiVideoPlayer(options);
                 break;    
@@ -381,6 +393,19 @@ jQuery(function($){
                 showVideo();
                 $(document).trigger('ei_showInventory', id);
                 break;
+            case 'pastProjects':
+                title.animate({
+                    top: 0,
+                    left: 10
+                }).css('position', 'fixed');
+                menu.animate({
+                    left: 10,
+                    top: 50
+                });
+                hideVideo();
+                showVideo();
+                $(document).trigger('ei_showInventory', id);
+                break;
             default:
                 title.html('Eilers Innovations')
                     .animate({
@@ -398,7 +423,7 @@ jQuery(function($){
     });
     
     
-    // BULLSHIT
+    // Still need to organize down here.
     /*
     *   Another Idea (bottom -> top) that could be combined, all seem to have
     *   to do with the position of elements. The final idea could also be
