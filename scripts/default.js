@@ -201,6 +201,7 @@ jQuery(function($){
         $('#ei_ytVideo').remove();
         videoBrowser.append($('<div />').attr('id','ei_ytVideo'));  // Refresh the YTVideo Box
         
+        
         function resetSocialBox(){
             $('#ei_twitter').css({
                 top: 'auto',
@@ -316,11 +317,11 @@ jQuery(function($){
             case 'home':
                 title.html('Eilers Innovations')
                     .animate({
-                    top: "100px",
+                    top: "50px",
                     left: (body.width()/2 - title.width()/2)
                 });
                 menu.animate({
-                    left: (body.width()/2)
+                    left: body.width() - 200
                 });
                 hideAll();  // Hide Everything Else
                 bigFacebook();
@@ -408,7 +409,12 @@ jQuery(function($){
     */
     function arrangeElements(){
         centerElement(title);
-        centerElement(menu);
+        menu.css({
+            left: body.width() - 200
+        });
+        $('#facebook-wall').css({
+            left: body.width() - 800
+        });
         
         twitterImage.rotate({
             duration: 9000,
