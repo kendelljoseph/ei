@@ -80,22 +80,22 @@ body {
     user-select: none;
 }
 .ei_menuItem:hover {
-    background-image: linear-gradient(bottom, rgb(17,68,17) 0%, rgb(85,170,85) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(17,68,17) 0%, rgb(85,170,85) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(17,68,17) 0%, rgb(85,170,85) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(17,68,17) 0%, rgb(85,170,85) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(17,68,17) 0%, rgb(85,170,85) 100%);
+    background-image: linear-gradient(left top, rgb(87,118,38) 100%, rgb(25,36,5) 0%);
+    background-image: -o-linear-gradient(left top, rgb(87,118,38) 100%, rgb(25,36,5) 0%);
+    background-image: -moz-linear-gradient(left top, rgb(87,118,38) 100%, rgb(25,36,5) 0%);
+    background-image: -webkit-linear-gradient(left top, rgb(87,118,38) 100%, rgb(25,36,5) 0%);
+    background-image: -ms-linear-gradient(left top, rgb(87,118,38) 100%, rgb(25,36,5) 0%);
     
     background-image: -webkit-gradient(
         linear,
-    	left bottom,
     	left top,
-    	color-stop(0, rgb(17,68,17)),
-    	color-stop(1, rgb(85,170,85))
+    	right bottom,
+    	color-stop(1, rgb(87,118,38)),
+    	color-stop(0, rgb(25,36,5))
     );
 }
 .ei_menuItem:active {
-    color: #0f0;
+    color: #90d91a;
 }
 
 iframe {
@@ -317,7 +317,7 @@ iframe {
     #ei_socialMedia > img:hover {
         cursor: pointer;
         border-radius: 100%;
-        box-shadow: 0 0 10px 10px #0f0;
+        box-shadow: 0 0 10px 10px #587626;
     }
 
 #ei_twitter {
@@ -351,7 +351,7 @@ iframe {
             text-decoration: none;
             }
             .tweet_list li a[title="view tweet on twitter"] {
-            color: #0f0;
+            color: #587626;
             text-decoration: none;
             }
         
