@@ -8,6 +8,21 @@ body {
     background-position: right top;
     background-repeat: no-repeat;
     background-color: #000;
+    /*
+    background-image: linear-gradient(bottom, rgb(38,51,35) 0%, rgb(0,0,0) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(38,51,35) 0%, rgb(0,0,0) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(38,51,35) 0%, rgb(0,0,0) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(38,51,35) 0%, rgb(0,0,0) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(38,51,35) 0%, rgb(0,0,0) 100%);
+    
+    background-image: -webkit-gradient(
+        linear,
+    	left bottom,
+    	left top,
+    	color-stop(0, rgb(38,51,35)),
+    	color-stop(1, rgb(0,0,0))
+    );
+    */
 }
 
 #ei_title {
