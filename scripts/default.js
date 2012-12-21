@@ -330,10 +330,11 @@ jQuery(function($){
                 title.html('Eilers Innovations')
                     .animate({
                     top: "50px",
+                    height: "1.5em",
                     left: (body.width()/2 - title.width()/2)
                 }).css('position', 'absolute');
                 menu.animate({
-                    left: body.width() - 200,
+                    left: body.width() - 180,
                     top: 160
                 });
                 hideAll();  // Hide Everything Else
@@ -442,7 +443,7 @@ jQuery(function($){
     function arrangeElements(){
         centerElement(title);
         menu.css({
-            left: body.width() - 200
+            left: body.width() - 180
         });
         $('#facebook-wall').css({
             left: body.width() - 800

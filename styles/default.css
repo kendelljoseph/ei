@@ -347,7 +347,7 @@ iframe {
         list-style-type: none;
         }
             .tweet_list li a {
-            color: #055;
+            color: #0f0;
             text-decoration: none;
             }
             .tweet_list li a[title="view tweet on twitter"] {
@@ -370,7 +370,11 @@ iframe {
 #facebook-wall {
     position: absolute;
     top: 150px;
+    width: 600px;
 }
+    #facebook-wall > span > iframe {
+        background-color: #fff;
+    }
 
 #facebook {
     position: fixed;
